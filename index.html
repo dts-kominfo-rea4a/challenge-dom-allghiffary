@@ -27,6 +27,7 @@
     <!-- ! Untuk tantangan ini, script jangan diubah ke external js yah ! -->
     <script>
       // TODO: Deklarasi variable sesuai dengan kebutuhan di sini
+      const app = document.getElementById('app');
       let button = document.getElementById('todo-submit');
       let input = document.getElementById('todo-input');
       let output = document.getElementById('todo-output');
@@ -36,24 +37,24 @@
       // Jangan ubah cara deklarasi fungsinya, cukup isi saja
       function fnClickHandler(toDoItem) {
         const keyCode = toDoItem.key;
-        if (keyCode === 'Enter') {
+        if (keyCode === 'Enter' || toDoItem.type === "click") {
           const li = document.createElement('li');
           li.innerHTML = input.value;
           output.append(li);
           input.value = '';
-        } else if (toDoItem instanceof PointerEvent) {
+        } /* else if (toDoItem instanceof PointerEvent) {
           const li = document.createElement('li');
           li.innerHTML = input.value;
           output.append(li);
           input.value = '';
-        }
+        } */
         input.focus();
       }
 
       // TODO: register event onclick / addEventListener untuk button
       // akan menjalankan fungsi fnClickHandler
       button.addEventListener('click', fnClickHandler);
-      document.addEventListener('keypress', fnClickHandler);
+      input.addEventListener('keypress', fnClickHandler);
       // TODO: register event onkeypress / addEventListener untuk input
       // sehingga saat di input ditekan enter akan menjalankan fungsi fnClickHandler juga
     </script>
